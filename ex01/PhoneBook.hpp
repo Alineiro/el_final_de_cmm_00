@@ -1,20 +1,22 @@
 #include <iostream>
-#include <string>
-
-//CONSTRUCTORS GO HERE RIGHT? FOR NOW AT LEAST.
+#include <cstring>
+#include <cctype>
 
 class	Contact
 {
 	private:
-		char	f_name[10];
-		char	l_name[10];
-		char	nickname[10];
-		char	phone_number[10];
-		char	secret[10];
+		std::string	f_name;
+		std::string	l_name;
+		std::string	nickname;
+		std::string	phone_number;
+		std::string	secret;
 	public:
 		Contact();
 		~Contact();
+	//MEMBER FUNCTIONS/METHODS DECLARATIONS GO HERE.
 };
+
+//UNSURE IF I NEED ANY OTHER PARAMETER HERE.
 
 class	PhoneBook
 {
@@ -24,8 +26,3 @@ class	PhoneBook
 		PhoneBook();
 		~PhoneBook();
 };
-
-Contact::Contact()
-{
-	f_name[0] = '\0';
-	l_name[0] = '\0';
