@@ -2,12 +2,14 @@
 
 //MAYBE ADD TEXT TO A MACRO IN .HPP.
 //
-//CURRENTLY SEGFAULTS, NEED TO CHANGE HOW INPUT IS SAVED.
 //SUBJECT SAYS DYNAMIC ALLOCATION IS NOT ALLOWED, BUT I SHOULD USE STD::STRING TO SAVE
 //THE INPUT AND NOT WORRY, HOWEVER THIS IS DYNAMIC, SO I'M NOT SURE IF IT'S ALLOWED,
 //CHECK AND CHANGE LATER IF NEEDED.
+//
+//WHEN SHOWING A SPECIFIC CONTACT USING SEARCH, DOES IT NEED TO SHOW ONLY THE FIRST
+//10 CHARACTERS LIKE THE BASIC SEARCH COMMAND, OR DOES IT HAVE TO SHOW EVERYTHING?
 
-void	CreatePhoneBook(PhoneBook &phone)
+void	createPhoneBook(PhoneBook &phone)
 {
 	std::string	input;
 
@@ -15,9 +17,10 @@ void	CreatePhoneBook(PhoneBook &phone)
 	while (1)
 	{
 		std::cout << "Your input: ";
-		std::cin >> input;
+		std::getline(std::cin, input);
 		if (input == "ADD")
 		{
+			phone.addContact();
 			//ADD CONTACT TO PHONEBOOK
 		}
 		else if (input == "SEARCH")
@@ -37,6 +40,6 @@ int	main(void)
 {
 	PhoneBook	phone;
 
-	CreatePhoneBook(phone);
+	createPhoneBook(phone);
 	return (0);
 }

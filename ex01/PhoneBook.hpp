@@ -5,24 +5,29 @@
 class	Contact
 {
 	private:
-		std::string	f_name;
-		std::string	l_name;
-		std::string	nickname;
-		std::string	phone_number;
-		std::string	secret;
+		std::string	_f_name;
+		std::string	_l_name;
+		std::string	_nickname;
+		std::string	_phone_number;
+		std::string	_secret;
 	public:
 		Contact();
 		~Contact();
-	//MEMBER FUNCTIONS/METHODS DECLARATIONS GO HERE.
+		int	emptyCheck();
+		void	setFirstName(std::string prompt);
+		void	setLastName(std::string prompt);
+		void	setNickname(std::string prompt);
+		void	setPhoneNumber(std::string prompt);
+		void	setSecret(std::string prompt);
 };
-
-//UNSURE IF I NEED ANY OTHER PARAMETER HERE.
 
 class	PhoneBook
 {
 	private:
 		Contact	_contact[8];
+		int	_idx;
 	public:
 		PhoneBook();
 		~PhoneBook();
+		void	addContact();
 };
