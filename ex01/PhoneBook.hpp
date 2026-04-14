@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <cctype>
+#include <iomanip>
 
 class	Contact
 {
@@ -14,11 +15,8 @@ class	Contact
 		Contact();
 		~Contact();
 		int	emptyCheck();
-		void	setFirstName(std::string prompt);
-		void	setLastName(std::string prompt);
-		void	setNickname(std::string prompt);
-		void	setPhoneNumber(std::string prompt);
-		void	setSecret(std::string prompt);
+		void	setValues(std::string prompt, char c);
+		void	showContact();
 };
 
 class	PhoneBook
@@ -30,4 +28,5 @@ class	PhoneBook
 		PhoneBook();
 		~PhoneBook();
 		void	addContact();
+		void	searchContact();
 };
