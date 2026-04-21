@@ -3,12 +3,11 @@
 PhoneBook::PhoneBook()
 {
 	_idx = 0;
-	//IDK WHAT TO PUT IN EITHER CONST/DESTRUCTOR.
 }
 
 PhoneBook::~PhoneBook()
 {
-
+	std::cout << "Phonebook exited successfully" << std::endl;
 }
 
 std::string	getInput(std::string prompt)
@@ -41,25 +40,36 @@ void	PhoneBook::addContact(void)
 
 void	PhoneBook::searchContact(void)
 {
-	int	current_idx = 0;
+	int	currentIdx = 0;
 
 	if (_idx == 0)
 	{
 		std::cout << "There are no contacts saved" << std::endl;
 		return ;
 	}
-	std::cout << std::setw(10) << "Index" << "|"
+	std::cout << "|" << std::setw(10) << "Index" << "|"
 		<< std::setw(10) << "First name" << "|"
 		<< std::setw(10) << "Last name" << "|"
-		<< std::setw(10) << "Nickname" << std::endl;
-	while (current_idx < _idx)
+		<< std::setw(10) << "Nickname" << "|" << std::endl;
+	while (currentIdx < _idx)
 	{
-		std::cout << std::setw(10) << current_idx << "|";
-		_contact[current_idx].showContact();
-		current_idx++;
+		std::cout << "|" << std::setw(10) << currentIdx << "|";
+		_contact[currentIdx].showContact();
+		currentIdx++;
 	}
-	//HERE DO THE WHOLE SELECT AN SPECIFIC CONTACT THING.
-	//WHEN SHOWING A SPECIFIC CONTACT USING SEARCH, DOES IT NEED TO SHOW ONLY THE FIRST
-	//10 CHARACTERS LIKE THE BASIC SEARCH COMMAND, OR DOES IT HAVE TO SHOW EVERYTHING?
-	//SIMILARLY, DOES IT HAVE TO SHOW JUST THE INDEX, NAMES AND NICKNAME, OR EVERYTHING?
+	while (1)
+	{
+		try
+		{
+			currentIdx = std::stoi(getInput("Select contact index: "));
+			if (currentIdx >= 0 && currentIdx < _idx)
+				break ;
+			std::cout << "Select a valid index value from 0 to 8" << std::endl;
+		}
+		catch(std::exception &error)
+		{
+			std::cout << "Select a valid index value from 0 to 8" << std::endl;
+		}
+	}
+	_contact[currentIdx].showFullContact();
 }

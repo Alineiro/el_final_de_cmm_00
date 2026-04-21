@@ -17,6 +17,7 @@ class	Contact
 		int	emptyCheck();
 		void	setValues(std::string prompt, char c);
 		void	showContact();
+		void	showFullContact();
 };
 
 class	PhoneBook
