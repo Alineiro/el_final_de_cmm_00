@@ -15,17 +15,6 @@ std::string	truncate(std::string str)
 	return (str);
 }
 
-int	Contact::emptyCheck()
-{
-	if (_f_name.empty() || _l_name.empty() || _nickname.empty()
-		|| _phone_number.empty() || _secret.empty())
-	{
-		std::cout << "Contacts can't have empty fields" << std::endl;
-		return (1);
-	}
-	return (0);
-}
-
 void	Contact::setValues(std::string prompt, char c)
 {
 	if (c == 'f')

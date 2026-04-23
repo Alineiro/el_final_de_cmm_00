@@ -24,19 +24,25 @@ void	PhoneBook::addContact(void)
 	int	current_idx = 0;
 	if (_idx != 8)
 		current_idx = _idx;
-	_contact[current_idx].setValues(getInput("Type first name: "), 'f');
-	_contact[current_idx].setValues(getInput("Type last name: "), 'l');
-	_contact[current_idx].setValues(getInput("Type nickname: "), 'n');
-	_contact[current_idx].setValues(getInput("Type phone number: "), 'p');
-	_contact[current_idx].setValues(getInput("Type darkest secret: "), 's');
-	if (_contact[current_idx].emptyCheck() == 1)
+	std::string	f_name = getInput("Type first name: ");
+	std::string	l_name = getInput("Type last name: ");
+	std::string	n_name = getInput("Type nickname: ");
+	std::string	p_number = getInput("Type phone number: ");
+	std::string	secret = getInput("Type darkest secret: ");
+
+	if (f_name.empty() || l_name.empty() || n_name.empty() || p_number.empty() || secret.empty())
+	{
+		std::cout << "Contacts can't have empty fields" << std::endl;
 		return ;
+	}
+	_contact[current_idx].setValues(f_name, 'f');
+	_contact[current_idx].setValues(l_name, 'l');
+	_contact[current_idx].setValues(n_name, 'n');
+	_contact[current_idx].setValues(p_number, 'p');
+	_contact[current_idx].setValues(secret, 's');
 	if (_idx != 8)
 		_idx++;
 }
-
-//CAN I ADD A PIPE CHARACTER BEFORE AND AFTER EACH COLUMN, IT WOULD MAKE IT
-//LOOK BETTER, BUT IM NOT SURE IF ITS AGAINST SUBJECT RULES.
 
 void	PhoneBook::searchContact(void)
 {
@@ -66,7 +72,7 @@ void	PhoneBook::searchContact(void)
 				break ;
 			std::cout << "Select a valid index value from 0 to 8" << std::endl;
 		}
-		catch(std::exception &error)
+		catch (std::exception &error)
 		{
 			std::cout << "Select a valid index value from 0 to 8" << std::endl;
 		}
